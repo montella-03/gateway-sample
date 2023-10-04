@@ -1,0 +1,12 @@
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: route1
+          uri: ${HELLO_URI:http://localhost:8081}
+          predicates:
+            - Path=/api/hello/**
+          filters:
+            - AddRequestHeader=X-powered-by, christopher
+            - AddResponseHeader=X-Response-Default-Foo, christopher
